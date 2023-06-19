@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myapplication.R;
+import com.example.myapplication.data.User;
 
 public class UserAdapter extends ListAdapter<User,UserAdapter.ViewHolder> {
 
@@ -26,7 +29,7 @@ public class UserAdapter extends ListAdapter<User,UserAdapter.ViewHolder> {
 
             @Override
             public boolean areContentsTheSame(@NonNull User oldItem, @NonNull User newItem) {
-                return oldItem.email.equals(newItem.email)&& oldItem.nom.equals(newItem.nom);
+                return oldItem.email.equals(newItem.email)&& oldItem.name.equals(newItem.name);
             }
         });
 
@@ -59,7 +62,7 @@ public class UserAdapter extends ListAdapter<User,UserAdapter.ViewHolder> {
         }
 
         public void bind(User user) {
-            name.setText(user.nom);
+            name.setText(user.name);
             email.setText(user.email);
             this.user = user;
         }

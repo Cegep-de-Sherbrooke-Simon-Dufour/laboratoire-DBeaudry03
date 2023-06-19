@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.AddUserFragment">
 
     <EditText
         android:id="@+id/name_input"
@@ -54,4 +55,5 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/add_user_button"
         app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
