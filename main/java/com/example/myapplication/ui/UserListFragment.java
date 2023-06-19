@@ -54,6 +54,7 @@ public class UserListFragment extends Fragment {
             }
         });
 
+        userAdapter.setOnUserClick(viewModel::removeUser);
         userAdapter.setOnUserClick(user->{
             viewModel.removeUser(user);
         });

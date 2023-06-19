@@ -6,27 +6,30 @@ import androidx.lifecycle.MutableLiveData;
 import java.lang.invoke.MutableCallSite;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
 public class UserRepository {
-    private final ArrayList<User> users = new ArrayList<>();
-    private final MutableLiveData<List<User>>userLiveData = new MutableLiveData<>(users);
+    private final UserDao userDao;
 
     @Inject
-    public UserRepository(){}
+    public UserRepository(UserDatabase userDatabase){
+        userDao = userDatabase.getUsersDao();
+    }
 
     public void addUser(User user){
-        users.add(user);
-        userLiveData.setValue(users);
+        Executors.newSingleThreadExecutor().execute(()->
+                userDao.insertAll(user));
     }
     public void deleteUser(User user){
-        users.remove(user);
-        userLiveData.setValue(users);
+        Executors.newSingleThreadExecutor().execute(()->
+                userDao.delete(user));
     }
     public LiveData<List<User>> getLiveDataUsers(){
-        return userLiveData;
+        return userDao.getAll();
+
     }
 }

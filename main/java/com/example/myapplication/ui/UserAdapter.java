@@ -29,7 +29,7 @@ public class UserAdapter extends ListAdapter<User,UserAdapter.ViewHolder> {
 
             @Override
             public boolean areContentsTheSame(@NonNull User oldItem, @NonNull User newItem) {
-                return oldItem.email.equals(newItem.email)&& oldItem.nom.equals(newItem.nom);
+                return oldItem.email.equals(newItem.email)&& oldItem.name.equals(newItem.name);
             }
         });
 
@@ -62,7 +62,7 @@ public class UserAdapter extends ListAdapter<User,UserAdapter.ViewHolder> {
         }
 
         public void bind(User user) {
-            name.setText(user.nom);
+            name.setText(user.name);
             email.setText(user.email);
             this.user = user;
         }
